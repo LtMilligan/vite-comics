@@ -10,12 +10,13 @@ export default {
 </script>
 <template>
     <main>
-        <div class="bg-jumbotron">
+        <div class="bg-jumbotron position-relative">
+            <span class="badge position-absolute rounded-0">CURRENT SERIES</span>
         </div>
         <div class="bg-grey p-5">
             <div class="container">
-                <div class="row row-col-6 content-grey">
-                    <div class="col d-flex" v-for="comic, index in comics" :key="index">
+                <div class="row content-grey d-flex">
+                    <div class="col-2 d-flex" v-for="(comic, index) in comics" :key="index">
                         <div class="card border-0 bg-transparent w-100 mx-3">
                             <img :src="comic.thumb" :alt="comic.series" class="card-img-top img-fluid">
                             <div>
@@ -23,15 +24,10 @@ export default {
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- <div v-for="(comic, index) in comics" :key="index" class="col-6 col-md-4 col-lg-2 mb-4 d-flex">
-                    <div class="card border-0 bg-transparent w-100 mx-3">
-                        <img :src="comic.thumb" :alt="comic.series" class="card-img-top img-fluid">
-                        <div>
-                            <h5 class="text-white text-center pt-2">{{ comic.series }}</h5>
-                        </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary w-auto px-5 rounded-0"><strong>LOAD MORE</strong></button>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <div class="bg-primary p-5">
@@ -69,11 +65,27 @@ export default {
         background-image: url(../../public/img/jumbotron.jpg);
         background-repeat: no-repeat;
         height: 450px;
+
+        .badge {
+            background-color: variables.$primary_color;
+            font-size: 30px;
+            padding: 14px 40px;
+            bottom: -25px;
+            left: 190px;
+        }
     }
 
     .bg-grey {
         background-color: rgb(39, 39, 39);
     }
+
+    .card {
+        img {
+            width: 200px;
+            height: 250px;
+        }
+    }
+
     .bg-primary {
         background-color: variables.$primary_color;
     }
